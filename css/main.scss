@@ -1,0 +1,144 @@
+
+/*COLOR PALETTE*/
+$backgroundcolors: #e2eff1 #8ccff7; 
+$rowcirclecolors:#4e89ae #43658b #ed6663 #ffa372;
+$hovercolors: #444 #000;
+/*CIRCLE RADII*/
+$circleradii: 70px 80px 90px 100px;
+/* 
+MIXIN
+
+2. SCSS should have a mixin to handle the centering of elements.
+
+3. SCSS should have a mixin that handles media queries.
+*/
+
+@mixin center 
+{
+    justify-content: center;   
+}
+
+@mixin vertical 
+{
+    @media screen and (min-width:0px) and (max-width: 620px)
+    {
+        flex-direction: column;
+    }   
+}
+
+@mixin pointer 
+{
+    cursor: pointer;
+    display:inline-block;
+
+    &:hover
+    {
+        background-color: nth($hovercolors, 1 );
+        color: nth($hovercolors, 2 );
+    }
+}
+
+@mixin center 
+{
+    justify-content: center;
+    align-items: center;
+    background-position: center;    
+}
+
+@mixin respons 
+{
+    @media screen and (max-width:480px) 
+    {
+        background-image: url("https://via.placeholder.com/200");
+        height: 200px;
+    }    
+    @media screen and (min-width:481px) and (max-width: 800px)
+    {
+        background-image: url("https://via.placeholder.com/300");
+        height: 300px;
+    }    
+}
+/* END OF MIXIN*/
+
+* 
+{
+    margin: 0;
+    padding: 0; 
+}
+  
+body 
+{
+    background-color: nth($backgroundcolors, 1 ); 
+}
+
+header
+{
+    background: url(https://via.placeholder.com/400);
+    background-color: nth($backgroundcolors, 2 );
+    background-repeat: no-repeat;
+    height: 400px;
+    @include center;
+    @include respons;
+}
+
+.container
+{
+    margin: 50px 0;
+}
+
+.rows .item
+{
+    display: block;
+    width: 100%;
+    height: 40px;
+}
+
+.circles
+{
+    display: flex;
+    @include center;
+    @include vertical;
+}
+
+.circles .item
+{
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.item-1
+{
+    width: nth($circleradii, 1);
+    height: nth($circleradii, 1);
+    background-color: nth($rowcirclecolors, 1 );
+    @include pointer;
+}
+.item-2 
+{
+    width: nth($circleradii, 2);
+    height: nth($circleradii, 2);
+    background-color:nth($rowcirclecolors, 2);
+    @include pointer; 
+}
+  
+.item-3 
+{
+    width: nth($circleradii, 3);
+    height: nth($circleradii, 3);
+    background-color: nth($rowcirclecolors, 3 );
+    @include pointer; 
+}
+  
+.item-4 
+{
+    width: nth($circleradii, 4);
+    height: nth($circleradii, 4);
+    background-color: nth($rowcirclecolors, 4 );
+    @include pointer; 
+}
+
+footer
+{
+    height: 50px;
+    background-color: nth($backgroundcolors, 2 );
+}
